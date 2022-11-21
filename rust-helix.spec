@@ -11,6 +11,11 @@ URL:            https://helix-editor.com
 Source0:        https://github.com/helix-editor/helix/archive/%{version}.tar.gz
 ExclusiveArch:  x86_64 ppc64le
 BuildRequires:  rust-packaging >= 21
+BuildRequires:  rust-anyhow-devel
+BuildRequires:  rust-arc-swap-devel
+BuildRequires:  rust-chrono-devel
+BuildRequires:  rust-content_inspector-devel
+BuildRequires:  rust-crossterm-devel
 
 %description
 Helix is a Rust-based post-modern text editor which is heavily
@@ -31,10 +36,6 @@ Helix text editor
 %prep
 %autosetup -n helix-%{version_no_tilde} -p1
 %cargo_prep
-
-%generate_buildrequires
-%cargo_generate_buildrequires -a
-echo '/usr/bin/asciidoctor'
 
 %build
 %cargo_build -a
